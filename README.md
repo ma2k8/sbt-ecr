@@ -69,6 +69,16 @@ And trigger the process using:
 
     VERSION_TAG=myfeature sbt ecr:push
 
+## Cross account
+
+By default, when the login task is executed, the Authenticate token does not have a **registry id**.
+
+When you use ECR with one AWS account, this value leave it as default Nil.
+
+Example usage:
+    repositoryDomain in Ecr := "your ecr repository domain"
+    registryIds in Ecr ++= Seq("your AWS account id")
+
 ## Repository security policy configuration
 
 By default, when the `createRepository` task is executed, the new repository does not have a **security policy**
